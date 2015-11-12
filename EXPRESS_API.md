@@ -9,6 +9,13 @@ The Express App must have 4 routes:
 
 Here is a detailed guide on how to proceed.
 
+## Objectives
+
+By the end of this exercise you should be able to:
+
+- Describe the process of deploying a database-backed Node app to Cloud Foundry
+- Demonstrate a calm and focused demeanor in the face of a highly complex task
+
 ## Users can see API documentation for the API
 
 - Create an express app (it doesn't matter what templating language because you won't use it)
@@ -82,6 +89,12 @@ Now you need to run your SQL file on that remote database.
   ```
   psql [connection-string] < migrations/01_create_memories.up.sql
   ```
+
+You need to do one last thing before your app can talk to the database - set the `DATABASE_URL` environment variable.
+
+```
+cf set-env [app-name] DATABASE_URL postgres://...
+```
 
 Now you should be able to visit your API documentation and run the "Try it out!" section of the `POST`.
 
