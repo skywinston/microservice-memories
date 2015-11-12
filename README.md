@@ -4,8 +4,8 @@
 
 This is a collaborative application that will involve you and your classmates and the instructors.  It involves 3 components:
 
-- A series of Angular apps all deployed to some static host that supports URL rewriting (like Divshot)
-- A series of Express API apps all deployed to some host such as Heroku or Cloud Foundry
+- A series of Angular apps all deployed to Cloud Foundry in such a way that the server supports URL rewriting (for `html5Mode(true)`)
+- A series of Express API apps all deployed to Cloud Foundry
 - A Service Registry app
 
 ![](wireframes/microservice-memories/microservice-memories.001.png)
@@ -39,15 +39,7 @@ The Angular app consists of two routes:
 
 ![](wireframes/microservice-memories.png)
 
-### Setting up the Angular App
+## Details on setting up the apps
 
-- Build an Angular app
-- Setup the routes to use HTML5 mode
-- Setup the controllers to contact the service registry first, then used the returned URLs to find / post the data
-- Consider using https://bootswatch.com/ if you haven't used it before
-- Run locally with superstatic
-- Deploy to divshot
-
-## Express App
-
-[Building the Express API](./EXPRESS_API.md)
+- [Building the Express API](./EXPRESS_API.md)
+- [Building the Angular APP](./ANGULAR_APP.md)

@@ -1,4 +1,4 @@
-# Microservice Memories
+# Microservice Memories - Building the Express API
 
 The Express App must have 4 routes:
 
@@ -25,6 +25,7 @@ By the end of this exercise you should be able to:
 - configure the app to use your local copy of `public/swagger.yml`
   - `url = "/swagger.yml";`
 - Deploy to Cloud Foundry
+- Add a `README.md` to your repo and paste in the production link along with a brief description of the project
 
 **Deploying to Cloud Foundry**
 
@@ -98,7 +99,8 @@ cf set-env [app-name] DATABASE_URL postgres://...
 
 Now you should be able to visit your API documentation and run the "Try it out!" section of the `POST`.
 
-Git commit and push.
+- Add instructions to the README to tell other developers how to run this migration / setup `.env`
+- Git commit and push.
 
 NOTE: make sure that your output matches the format that the API docs specify.
 
