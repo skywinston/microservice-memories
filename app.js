@@ -7,8 +7,11 @@ var bodyParser = require('body-parser');
 require('dotenv').load({silent: true});
 var memories = require('./routes/memories/index');
 var routes = require('./routes/index');
+var cors = require('cors');
 
 var app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
