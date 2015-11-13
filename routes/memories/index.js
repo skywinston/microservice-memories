@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var conString = process.env.POSTGRES_SERVER;
-var responseBuilder = require('../../lib/responseBuilder');
+var memoryFormatter = require('../../lib/memoryFormatter');
 
 router.route('/')
 .get(function(req, res){
@@ -10,7 +10,7 @@ router.route('/')
     client.query('SELECT * FROM memories', function(err, result){
       done();
       // build an object per the spec to send back via res.json
-      var response = responseBuilder.buildResponse(result);
+      var response = memoryFormatter.complete(result);
       res.json(response);
     });
   });
@@ -24,7 +24,20 @@ router.route('/')
         res.send("An error occurred: ", err)
       }
       // build an object per the spec to send back via res.json
-      var response = responseBuilder.buildResponse(result);
+      var response = memoryFormatter.complete(result);
+      res.json(response);
+    });
+  });
+});
+
+router.get('/years', function(req, res){
+  pg.connect(conString, function(err, client, done){
+    client.query('SELECT year FROM memories', function(err, result){
+      if(err){
+        res.status(500).send("Error: ", err);
+      }
+      // build an object per the spec to send back via res.json
+      var response = memoryFormatter.years(result);
       res.json(response);
     });
   });
@@ -37,15 +50,12 @@ router.get('/:year', function(req, res){
         res.status(500).send("Error: ", err);
       }
       // build an object per the spec to send back via res.json
-      var response = responseBuilder.buildResponse(result);
+      var response = memoryFormatter.complete(result);
       res.json(response);
     });
   });
 });
 
-router.get('/years', function(req, res){
-
-});
 
 
 
